@@ -1,0 +1,53 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript">
+
+	setTimeout(function() {
+
+		window.location.reload(1);
+
+	}, 10000);
+
+</script>
+
+<ul style="min-width: 1130px;">
+	<li>
+		{{
+			Home | safe
+		}}
+	</li>
+	<li><a href="/profile">Profile</a></li>
+	<li><a href="/notifs">Notifs{{Notifs | safe}}</a></li>
+	<li style="float:right"><a class="active" href="/logout">Logout</a></li>
+</ul>
+
+<div class="ChatScreen">
+	{{
+		Msgs | safe
+	}}
+</div>
+
+<div style="position: relative; bottom: 0;">
+	<div class="writingMachine">
+		<form action="/sendMsgTo{{y}}" method="POST">
+			<a class="login-form">
+			<div class="row msgScreen">
+				<div class="column" style="margin-top: 0px; flex: 1;">
+					<input type="text"
+						class="login-field msgField"
+						style="width: inherit;"
+						value=""
+						placeholder="type your massage here"
+						name="yourMsg">
+					<label class="login-field-icon fui-user" for="login-name">
+					</label>
+				</div>
+				<div class="column" style="margin-top: 0px; flex: 0;">
+					<input type="submit" value="Send" class="btn btn-primary btn-large btn-block msgBtn">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

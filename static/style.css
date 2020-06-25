@@ -1,0 +1,468 @@
+* {
+	box-sizing: border-box;
+}
+
+*:focus {}
+
+body {
+	font-family: Arial;
+	background-color: rgb(247, 4, 4);
+	padding: 50px;
+}
+
+.app-name {
+	font-family: 'Pacifico', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	font-size: 500%;
+	text-align: center;
+	color:rgb(10, 10, 10);
+}
+
+hr {
+	display: block;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	margin-left: auto;
+	margin-right: auto;
+	border-style: inset;
+	border-width: 1px;
+}
+
+.login {
+	margin: 20px auto;
+	width: 300px;
+}
+
+.login-screen {
+	background-color: #FFF;
+	padding: 20px;
+	border-radius: 5px
+}
+
+.app-title {
+	text-align: center;
+	color: #777;
+}
+
+.login-form {
+	text-align: center;
+}
+
+.control-group {
+	margin-bottom: 10px;
+}
+
+input {
+	text-align: center;
+	background-color: #ECF0F1;
+	border: 2px solid transparent;
+	border-radius: 3px;
+	font-size: 16px;
+	font-weight: 200;
+	padding: 10px 0;
+	width: 250px;
+	transition: border .5s;
+}
+
+input:focus {
+	border: 2px solid #3498DB;
+	box-shadow: none;
+}
+
+.researchBtn {
+	background-color: transparent;
+	border: 1px solid transparent;
+	height: 42.5px;
+	width: 42px;
+	color: white;
+}
+
+.btn {
+	border: 2px solid transparent;
+	background: #3498DB;
+	color: #ffffff;
+	font-size: 16px;
+	line-height: 25px;
+	padding: 10px 0;
+	text-decoration: none;
+	text-shadow: none;
+	border-radius: 3px;
+	box-shadow: none;
+	transition: 0.25s;
+	display: block;
+	width: 250px;
+	margin: 0 auto;
+}
+
+.btn:hover {
+	background-color: #2980B9;
+}
+
+.login-link {
+	font-size: 12px;
+	color: #444;
+	display: block;
+	margin-top: 12px;
+}
+
+ul {
+	border-radius: 7.5px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.noPicsHome {
+	display: block;
+	color: gray;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+	background-color: #111;
+}
+
+.active {
+	background-color: #555;
+}
+
+.onoffswitch {
+	padding-left: 7.5px;
+	position: relative;
+	width: 90px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+	display: none;
+}
+
+.onoffswitch-label {
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	border: 2px solid #999999;
+	border-radius: 20px;
+}
+
+.onoffswitch-inner {
+	display: block;
+	width: 200%;
+	margin-left: -100%;
+	transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before,
+.onoffswitch-inner:after {
+	display: block;
+	float: left;
+	width: 50%;
+	height: 30px;
+	padding: 0;
+	line-height: 30px;
+	font-size: 14px;
+	color: white;
+	font-family: Trebuchet, Arial, sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+	content: "♀";
+	padding-left: 0px;
+	background-color: #3498DB;
+	color: #FFFFFF;
+}
+
+/*
+	for the userInfo modification ;
+*/
+
+.onoffswitch-inner-uIm:before {
+	content: "♀";
+	padding-left: 32.5px;
+	background-color: #3498DB;
+	color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+	content: "♂";
+	padding-right: 32.5px;
+	background-color: #EEEEEE;
+	color: #999999;
+	text-align: right;
+}
+
+.onoffswitch-switch {
+	display: block;
+	width: 21px;
+	margin: 6px;
+	background: #FFFFFF;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 48.5px;
+	border: 1px solid #999999;
+	border-radius: 50%;
+	transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-inner {
+	margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
+	right: 0px;
+}
+
+.sexuality {
+	height: 33.75px;
+	width: 150px;
+	border-radius: 7.5px;
+	text-align: center
+}
+
+/* */
+
+.row {
+	display: flex;
+}
+
+.dashRow {
+	display: flex;
+	min-width: 1130px;
+}
+
+.column {
+	flex: 33.33%;
+	padding: 5px;
+	max-height: 300px;
+	margin-top: 22.5px;
+}
+
+.card {
+	/* Add shadows to create the "card" effect */
+	padding: 2.5px;
+	margin: 1.25px;
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	border-radius: 5px;
+	/* 5px rounded corners */
+	min-width: 270px;
+	height: 309px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+.img_avatar {
+	border-radius: 5px;
+	max-height: 180px;
+	min-height: 180px;
+	z-index: -1;
+}
+
+/* Add some padding inside the card container */
+.container {
+	padding: 2.5px 10px;
+	margin-top: -10.5px;
+}
+
+p {
+	max-width: 218.75px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.userInfo {
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	border-radius: 5px;
+	/* 5px rounded corners */
+	height: fit-content;
+	padding: 2.5px;
+	margin: 4.5px 1.25px 1.25px 1.25px;
+	min-width: 520px;
+}
+
+.userInfoCont {}
+
+.userInfoText {
+	font-size: 14.25px;
+	font-family: 'Arial', cursive;
+	color: gray;
+	margin-left: 5px;
+}
+
+.userinfo-group {}
+
+.userinfo-field {
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+
+.biographyInterests {
+	height: 210px;
+
+}
+
+.userInfoBtn {
+	margin: 0px 0px 0px 5px;
+}
+
+hr {
+	border-top: .25px solid lightblue;
+}
+
+.deleteUser {
+	color: gray;
+	font-size: 9.75px;
+	float: right;
+	padding-right: 5px;
+	margin-top: -10.5px;
+}
+
+.likeBtn {
+	text-decoration: none !important;
+	font-size: 21px;
+	font-family: sans-serif;
+	width: 24.75px;
+
+	z-index: -1;
+	float: right;
+	margin-right: -10.5px;
+	margin-top: 2.25px;
+}
+
+.blockBtn {
+	text-decoration: none !important;
+	font-size: 22.5px;
+	font-family: sans-serif;
+	color: darkred;
+	width: 24.75px;
+
+	z-index: 1;
+	float: right;
+	margin-right: -0.25px;
+	padding-top: 15px;
+}
+
+.fameR {
+	color: gray;
+	font-size: 18px;
+	float: right;
+	margin-right: -25px;
+	margin-top: 33.25%;
+}
+
+.blockedList {
+	color: gray;
+	font-size: 12px;
+}
+
+.writingMachine {
+	min-width: 1130px;
+	bottom: 0px;
+}
+
+.chatBtn {
+	text-decoration: none !important;
+	font-size: 24px;
+	color: silver;
+}
+
+.ChatScreen {
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	border-radius: 5px;
+	/* 5px rounded corners */
+	height: fit-content;
+	padding: 2.5px;
+	margin: 4.5px 1.25px 1.25px 1.25px;
+	min-width: 1128.5px;
+}
+
+.msgScreen {
+	background-color: white;
+	border-radius: 5px;
+	padding: 5px;
+
+	height: fit-content;
+	min-width: 1130px;
+}
+
+.msgBtn {
+	width: 135px;
+	height: 42px;
+	float: right;
+}
+
+.msgField {
+	margin: 0px 0px;
+	min-width: 100%;
+	flex: 1;
+}
+
+.Msgs {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.alert {
+	width: 300px;
+	padding: 12px;
+	border-radius: 5px;
+	font-size: .9rem;
+	margin-bottom: 16px;
+	border-width: 2px;
+	text-align: center;
+	opacity: 0.5;
+
+	transition: visibility 0s, opacity 1.5s linear;
+}
+
+.alert-warning {
+	margin: -43.49% auto -20px auto;
+	border-color: darkred;
+	background-color: red;
+	color: white;
+}
+
+.alert-info {
+	margin: -43.89% auto -20px auto;
+	border-color: darkgreen;
+	background-color: green;
+	color: white;
+}
+
+.alert-warning_login {
+	margin: -43.89% auto -20px auto;
+	border-color: darkred;
+	background-color: red;
+	color: white;
+}

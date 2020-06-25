@@ -1,0 +1,287 @@
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<ul style="min-width: 800px;">
+	<li>
+		{{
+			Home | safe
+		}}
+	</li>
+	<li><a href="/profile">Profile</a></li>
+	<li><a href="/notifs">Notifs{{Notifs | safe}}</a></li>
+	<li style="float:right"><a class="active" href="/logout">Logout</a></li>
+</ul>
+
+<style type="text/css">
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
+
+.frame {
+	top: 50%;
+	left: 50%;
+	width: 400px;
+	height: 400px;
+	margin-top: -200px;
+	margin-left: -200px;
+	border-radius: 2px;
+	box-shadow: 1px 2px 10px 0px rgba(0,0,0,0.3);
+	background: #3A92AF;
+	background: -webkit-linear-gradient(bottom left, #3A92AF 0%, #5CA05A 100%);
+	background: -moz-linear-gradient(bottom left, #3A92AF 0%, #5CA05A 100%);
+	background: -o-linear-gradient(bottom left, #3A92AF 0%, #5CA05A 100%);
+	background: linear-gradient(to top right, #3A92AF 0%, #5CA05A 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient(
+		startColorstr = '#3A92AF',
+		endColorstr = '#5CA05A',
+		GradientType = 1
+	);
+	color: #fff;
+	font-family: 'Open Sans', Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.center {
+	width: 300px;
+	height: 260px;
+	top: 70px;
+	left: 50px;
+	background: #fff;
+	box-shadow: 8px 10px 15px 0 rgba(0,0,0,0.2);
+	border-radius: 3px;
+	display: inline-block;
+	padding: 2.5px;
+	min-height: 180px;
+}
+
+.title {
+	font-size: 16px;
+	color: #676767;
+	line-height: 50px;
+	height: 50px;
+	border-bottom: 1px solid #D8D8D8;
+	text-align: center;
+}
+
+.dropzone {
+	z-index: 1;
+	box-sizing: border-box;
+	width: 100px;
+	height: 80px;
+	border: 1px dashed #A4A4A4;
+	border-radius: 3px;
+	text-align: center;
+	overflow: hidden;
+	display: inline-block;
+	margin-top: 60px;
+}
+
+.dropzone:is-dragover {
+	border-color: #666;
+	background: #eee;
+}
+
+.upload-btn {
+	width: 140px;
+	height: 40px;
+	bottom: 10px;
+	background: #6ECE3B;
+	border-radius: 3px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 14px;
+	box-shadow: 0 2px 0 0 #498C25;
+	cursor: pointer;
+	transition: all .2s ease-in-out;
+	display: inline-block;
+	margin-bottom: -45px;
+}
+
+.upload-btn:hover {
+	box-shadow: 0 2px 0 0 #498C25, 0 2px 10px 0 #6ECE3B;
+}
+
+.bar {
+	z-index: 1;
+	width: 300px;
+	height: 3px;
+	top: 49px;
+	left: 0;
+	background: #6ECE3B;
+	transition: all 3s ease-out;
+	transform: scaleX(0);
+	transform-origin: 0 0;
+}
+
+.bar:active {
+	transform: scaleX(1) translate3d(0,0,0);
+}
+
+.input {
+	width: 87.5px;
+	display: inline-block;
+}
+
+</style>
+
+<script type="text/javascript">
+
+var droppedFiles = false;
+var fileName = '';
+var $dropzone = $('.dropzone');
+var $button = $('.upload-btn');
+var uploading = false;
+var $bar = $('.bar');
+var timeOut;
+
+fileName = ''
+
+$dropzone.on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
+	e.preventDefault();
+	e.stopPropagation();
+})
+	.on('dragover dragenter', function() {
+	$dropzone.addClass('is-dragover');
+})
+	.on('dragleave dragend drop', function() {
+	$dropzone.removeClass('is-dragover');
+})
+	.on('drop', function(e) {
+	droppedFiles = e.originalEvent.dataTransfer.files;
+	fileName = droppedFiles[0]['name'];
+	$('.filename').html(fileName);
+	$('.dropzone .upload').hide();
+});
+
+$button.bind('click', function() {
+	startUpload();
+});
+
+$("input:file").change(function (){
+	fileName = $(this)[0].files[0].name;
+	$('.filename').html(fileName);
+	$('.dropzone .upload').hide();
+});
+
+</script>
+
+<div class="userInfo" style="min-width: 797.5px;">
+	<form action="/infoChange" method="POST" style="margin-bottom: 5px;" enctype="multipart/form-data">
+		<div class="row">
+			<div class="column" style="text-align: center">
+				<div class="center">
+					<div class="bar"></div>
+					<div class="title">Drop file to upload</div>
+					<div class="dropzone">
+						<div class="content">
+							<img src="https://100dayscss.com/codepen/upload.svg" class="upload">
+							<input type="file" class="input" name="file">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="userInfoCont">
+			<div class="userInfoText">
+				<h2> Your Profile Information; </h2>
+			</div>
+			<div class="row">
+				<div class="column" style="margin: -5px; max-width: fit-content;">
+					<div class="userinfo-group">
+						<input type="text" class="userinfo-field" value="" placeholder="username" name="username">
+						<label class="login-field-icon fui-user" for="login-name">
+						</label>
+					</div>
+				</div>
+				<div class="column" style="margin: -5px; max-width: fit-content;">
+					<div class="onoffswitch" style="margin-top: 5px;">
+						<input type="checkbox" class="onoffswitch-checkbox" id="onOffSwitch" name="gender" checked>
+						<label class="onoffswitch-label" for="onOffSwitch">
+							<span class="onoffswitch-inner onoffswitch-inner-uIm"></span>
+							<span class="onoffswitch-switch"></span>
+						</label>
+					</div>
+				</div>
+			</div>
+			<a href="" style="color: gray; font-size: 9.75px; padding-left: 5px;">
+				current userName: {{userName}}
+			</a>
+			<hr>
+			<div class="userinfo-group">
+				<input type="text" class="userinfo-field" value="" placeholder="realname" name="realname">
+				<label class="login-field-icon fui-user" for="login-name">
+				</label>
+			</div>
+			<a href="" style="color: gray; font-size: 9.75px; padding-left: 5px;">
+				current realName: {{realName}}
+			</a>
+			<hr>
+			<div class="userinfo-group">
+				<input type="text" class="userinfo-field" value="" placeholder="e-mail" name="e_mail">
+				<label class="login-field-icon fui-user" for="login-name">
+				</label>
+			</div>
+			<a href="" style="color: gray; font-size: 9.75px; padding-left: 5px;">
+				current e mail: {{e_mail}}
+			</a>
+			<hr>
+			<div class="row">
+				<div class="column" style="margin: -5px; max-width: fit-content;">
+					<div class="userinfo-group">
+						<input type="password" class="userinfo-field" value="" placeholder="password" name="password">
+						<label class="login-field-icon fui-lock" for="login-pass">
+						</label>
+					</div>
+				</div>
+				<div class="column" style="margin: -5px; max-width: fit-content;">
+					<div class="userinfo-group">
+						<input type="password" class="userinfo-field" value="" placeholder="confirmation" name="confirm">
+						<label class="login-field-icon fui-lock" for="login-pass">
+						</label>
+					</div>
+				</div>
+			</div>
+			<a href="" style="color: gray; font-size: 9.75px; padding-left: 5px;">
+				• it has to have [ a -> z, A -> Z & 0 -> 9 ]
+			</a>
+			<hr>
+			<div class="row">
+				<div class="column" style="margin: -5px; max-width: fit-content;">
+					<div class="userinfo-group">
+						<input type="text" class="userinfo-field biographyInterests" value="" placeholder="biography" name="biography">
+						<label class="login-field-icon fui-lock" for="login-pass">
+						</label>
+					</div>
+				</div>
+				<div class="column" style="margin: -5px; max-width: fit-content;">
+					<div class="userinfo-group">
+						<input 
+							type="text"
+							class="userinfo-field biographyInterests"
+							value=""
+							placeholder="interests"
+							name="interests"
+						>
+						<label class="login-field-icon fui-lock" for="login-pass">
+						</label>
+					</div>
+				</div>
+				<div class="column" style="margin-left: 12.5px; margin-top: -12.5px; max-width: fit-content;">
+					<h3 style="font-size: 12px; color: gray;">People you don't like:</h3>
+					{{
+						pYDL | safe
+					}}
+				</div>
+			</div>
+			<div style="margin-left: 5px; padding-right: 4.5px;" class="control-group">
+				<select class="sexuality" name="sexuality" style="width: 250px;">
+					<option value="1">heteroSexual</option>
+					<option value="-1">homoSexual</option>
+					<option value="0">biSexual</option>
+				</select>
+			</div>
+			<input type="submit" value="Submit Changes" class="btn btn-primary btn-large btn-block userInfoBtn">
+			<a href="/deleteUserRoute" class="deleteUser">
+				Delete my Account
+			</a>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,104 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<ul style="min-width: 1130px;">
+	<li>
+		{{
+			Home | safe
+		}}
+	</li>
+	<li><a href="/profile">Profile</a></li>
+	<li><a href="/notifs">Notifs{{Notifs | safe}}</a></li>
+	<!-- last touch -->
+	<form action="/search" method="POST" style="margin-top: -15px;">
+		<li>
+			<button type="submit" class="researchBtn">
+				<i class="fa fa-search" style="font-size: 27px; padding-top: 7.5px;"></i>
+			</button>
+		</li>
+		<li>
+			<input
+				type="text"
+				class="login-field"
+				value=""
+				placeholder="type your keywords here"
+				name="searchTxt"
+				style="margin-top: 1.5px; "
+			>
+			<label class="login-field-icon fui-user" for="login-name">
+			</label>
+		</li>
+	</form>
+	<!-- last touch -->
+	<li style="float:right"><a class="active" href="/logout">Logout</a></li>
+</ul>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+	.mySlides {}
+
+	.w3-left,
+	.w3-right,
+	.w3-badge {
+		cursor: pointer;
+	}
+
+	.w3-badge {
+		height: 15px;
+		width: 15px;
+		padding: 0px 2.5px;
+		margin: 6.25px 2.5px 0px 2.5px;
+	}
+</style>
+<div style="margin-top: -17.5px;">
+	{{
+		cards | safe
+	}}
+</div>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script>
+	var slideIndex = 1;
+	showDivs(slideIndex);
+
+	function plusDivs(n) {
+		showDivs(slideIndex += n);
+	}
+
+	function currentDiv(n) {
+		showDivs(slideIndex = n);
+	}
+
+	function showDivs(n) {
+		var i;
+		var x = document.getElementsByClassName("mySlides");
+		var dots = document.getElementsByClassName("demo");
+
+		if (n > x.length) {
+			slideIndex = 1
+		}
+		if (n < 1) {
+			slideIndex = x.length
+		}
+		for (i = 0; i < x.length; i++) {
+			x[i].style.display = "none";
+		}
+		for (i = 0; i < dots.length; i++) {
+			dots[i].className = dots[i].className.replace(" w3-white", "");
+		}
+		x[slideIndex - 1].style.display = "block";
+		dots[slideIndex - 1].className += " w3-white";
+	}
+
+	function truncateText(selector, maxLength) {
+		var element = document.querySelector(selector),
+			truncated = element.innerText;
+
+		if (truncated.length > maxLength) {
+			truncated = truncated.substr(0, maxLength) + '...';
+		}
+
+		return truncated;
+	}
+
+	document.querySelector('p').innerText = truncateText('p', 24);
+</script>
