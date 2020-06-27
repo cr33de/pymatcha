@@ -1,0 +1,19 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<ul style="min-width: 1130px;">
+	<li>
+		{{
+			Home | safe
+		}}
+	</li>
+	<li><a href="/profile">Profile</a></li>
+	<li><a href="/notifs">Notifs{{Notifs | safe}}</a></li>
+	<li style="float:right"><a class="active" href="/logout">Logout</a></li>
+</ul>
+
+<div class="ChatScreen">
+	{{
+		notifList | safe
+	}}
+</div>

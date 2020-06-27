@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+<form action="/login" method="POST">
+	<div class="login">
+		<div class="app-name">
+			<h2> Matcha </h2>
+		</div>
+		<div class="login-screen">
+			<div class="app-title">
+				<h1>Sign In</h1>
+			</div>
+			<a class="login-form">
+				<div class="control-group">
+					<input type="text" class="login-field" value="" placeholder="username" name="username">
+					<label class="login-field-icon fui-user" for="login-name">
+					</label>
+				</div>
+				<div class="control-group">
+					<input type="password" class="login-field" value="" placeholder="password" name="password">
+					<label class="login-field-icon fui-lock" for="login-pass">
+					</label>
+				</div>
+				<input type="submit" value="Log in" class="btn btn-primary btn-large btn-block">
+				<a href="/passRetrieveForm" style="color: gray; font-size: 9.75px; padding-left: 5px;">
+					forgot password ?
+				</a>
+				<hr />
+				<a href="/nwusrForm/0" id="signup_btn" style="text-align: center" class="btn btn-primary btn-large btn-block">
+					Sign up
+				</a>
+		</div>
+		<div style="text-align: center;">
+			<h5 style="text-align: center; font-size: 15px; color: white; margin: 15px;">Built with:</h5>
+			<img src="../static/Flask.svg.png" style="align-self: center; max-width: 240px; display: inline-block;">
+		</div>
+	</div>
+</form>
+
+{% with messages = get_flashed_messages(with_categories = true) %}
+
+	<!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+
+	{% if messages %}
+		{% for category, e in messages %}
+			<div class="alert alert-{{ category }} alert-dismissible" role="alert">
+				<!-- <strong>Title</strong> --> {{ e }}
+			</div>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
